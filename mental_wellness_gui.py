@@ -11,7 +11,7 @@ import threading
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'kichu@2311',  # Change this to your MySQL password
+    'password': '******',  # Change this to your MySQL password
     'database': 'MentalWellness'
 }
 
