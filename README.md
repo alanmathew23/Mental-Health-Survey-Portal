@@ -11,6 +11,16 @@ The **MentalWellness** database aims to maintain student mental health records, 
 
 ***
 
+## Requirements for GUI
+```
+pip install tkcalendar
+```
+
+## How to run
+```
+python mental_wellness_gui.py
+```
+
 ## Database Schema
 
 ### 1. Student
@@ -179,10 +189,6 @@ SELECT @msg;
 - Include access auditing logs and counselor availability calendars.
 
 ***
-## Requirements for GUI
-```
-pip install tkcalendar
-```
 
 ## Author
 
