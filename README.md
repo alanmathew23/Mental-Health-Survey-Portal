@@ -179,6 +179,10 @@ SELECT @msg;
 - Include access auditing logs and counselor availability calendars.
 
 ***
+## Requirements for GUI
+```
+pip install tkcalendar
+```
 
 ## Author
 
