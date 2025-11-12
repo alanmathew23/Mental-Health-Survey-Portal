@@ -6,6 +6,7 @@ CREATE TABLE Student (
     StudentID INT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
+    Password VARCHAR(100) NOT NULL,
     Department VARCHAR(50) NOT NULL,
     YearOfStudy INT CHECK (YearOfStudy BETWEEN 1 AND 4)
 );
@@ -15,17 +16,18 @@ CREATE TABLE Counselor (
     CounselorID INT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100) UNIQUE NOT NULL,
+	Password VARCHAR(100) NOT NULL,
     Specialization VARCHAR(100)
 );
 
 -- Session Table with StartTime and EndTime added
 CREATE TABLE Session (
-    SessionID INT PRIMARY KEY,
+    SessionID INT PRIMARY KEY auto_increment,
     StudentID INT,
     CounselorID INT,
     SessionDate DATE NOT NULL,
     StartTime TIME NOT NULL,
-    EndTime TIME NOT NULL,
+    EndTime TIME NOT NULL,	
     Notes TEXT,
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
         ON DELETE CASCADE ON UPDATE CASCADE,
@@ -78,19 +80,21 @@ CREATE TABLE MentalHealthLog (
 
 -- Insert Students
 INSERT INTO Student VALUES 
-(1, 'Aarav Sharma', 'aarav.sharma@pesu.edu', 'CSE', 2),
-(2, 'Diya Rao', 'diya.rao@pesu.edu', 'ECE', 3),
-(3, 'Rahul Menon', 'rahul.menon@pesu.edu', 'ME', 1),
-(4, 'Sneha Patil', 'sneha.patil@pesu.edu', 'CSE', 4),
-(5, 'Karan Nair', 'karan.nair@pesu.edu', 'EEE', 2);
+(1, 'Aarav Sharma', 'aarav.sharma@pesu.edu','password','CSE', 2),
+(2, 'Diya Rao', 'diya.rao@pesu.edu','password', 'ECE', 3),
+(3, 'Rahul Menon', 'rahul.menon@pesu.edu','password', 'ME', 1),
+(4, 'Sneha Patil', 'sneha.patil@pesu.edu','password', 'CSE', 4),
+(5, 'Karan Nair', 'karan.nair@pesu.edu','password', 'EEE', 2),
+(6, 'Demo_Studentr', 'demo@pesu.edu','Demo','password',1);
 
 -- Insert Counselors
 INSERT INTO Counselor VALUES
-(1, 'Dr. Meera Iyer', 'meera.iyer@pesu.edu', 'Stress Management'),
-(2, 'Dr. Arjun Rao', 'arjun.rao@pesu.edu', 'Anxiety'),
-(3, 'Dr. Kavya Sharma', 'kavya.sharma@pesu.edu', 'Relationships'),
-(4, 'Dr. Vivek Kulkarni', 'vivek.kulkarni@pesu.edu', 'Sleep Disorders'),
-(5, 'Dr. Priya Menon', 'priya.menon@pesu.edu', 'Career Guidance');
+(1, 'Dr. Meera Iyer', 'meera.iyer@pesu.edu','password', 'Stress Management'),
+(2, 'Dr. Arjun Rao', 'arjun.rao@pesu.edu','password', 'Anxiety'),
+(3, 'Dr. Kavya Sharma', 'kavya.sharma@pesu.edu','password', 'Relationships'),
+(4, 'Dr. Vivek Kulkarni', 'vivek.kulkarni@pesu.edu','password', 'Sleep Disorders'),
+(5, 'Dr. Priya Menon', 'priya.menon@pesu.edu','password', 'Career Guidance'),
+(6, 'Demo_Counselor', 'demo@pesu.edu','password','Demo');
 
 -- Insert Sessions WITH time slots (non-overlapping for both students and counselors)
 INSERT INTO Session VALUES
@@ -99,6 +103,7 @@ INSERT INTO Session VALUES
 (3, 3, 3, '2025-08-10', '11:00:00', '12:00:00', 'Managing peer pressure'),
 (4, 4, 4, '2025-08-15', '12:00:00', '13:00:00', 'Improving sleep cycle'),
 (5, 5, 5, '2025-08-20', '13:00:00', '14:00:00', 'Career planning discussion');
+ALTER TABLE Session MODIFY SessionID INT AUTO_INCREMENT;
 
 -- Insert Resources
 INSERT INTO MentalHealthResource VALUES
